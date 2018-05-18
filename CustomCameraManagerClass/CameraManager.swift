@@ -30,6 +30,15 @@ open class CameraManager: NSObject {
                 return .down
             case .landscapeLeft:
                 return .up
+            case .faceUp:
+                switch UIApplication.shared.statusBarOrientation {
+                case .landscapeRight:
+                    return .up
+                case .landscapeLeft:
+                    return .down
+                default:
+                    return .right
+                }
             default:
                 return .right
             }
@@ -43,6 +52,15 @@ open class CameraManager: NSObject {
                 return .upMirrored
             case .landscapeLeft:
                 return .downMirrored
+            case .faceUp:
+                switch UIApplication.shared.statusBarOrientation {
+                case .landscapeRight:
+                    return .downMirrored
+                case .landscapeLeft:
+                    return .upMirrored
+                default:
+                    return .leftMirrored
+                }
             default:
                 return .leftMirrored
             }

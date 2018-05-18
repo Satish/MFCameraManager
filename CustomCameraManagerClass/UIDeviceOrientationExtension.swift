@@ -19,6 +19,17 @@ extension UIDeviceOrientation {
             return AVCaptureVideoOrientation.landscapeRight
         case .portraitUpsideDown:
             return AVCaptureVideoOrientation.portraitUpsideDown
+        case .faceUp:
+            switch UIApplication.shared.statusBarOrientation {
+            case .portrait:
+                return AVCaptureVideoOrientation.portrait
+            case .landscapeLeft:
+                return AVCaptureVideoOrientation.landscapeLeft
+            case .landscapeRight:
+                return AVCaptureVideoOrientation.landscapeRight
+            default:
+                return AVCaptureVideoOrientation.portrait
+            }
         default:
             return AVCaptureVideoOrientation.portrait
         }
